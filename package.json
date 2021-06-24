@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon server.js",
+    "start": "node server.js",
     "test": "node --experimental-vm-modules --no-warnings  node_modules/.bin/jest -i --verbose --watch",
     "seed": "node db/seed.js"
   },

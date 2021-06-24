@@ -1,5 +1,6 @@
 // * package imports
 import express from 'express'
+import cors from 'cors'
 
 // * req router import
 import router from './views/router.js'
@@ -11,6 +12,7 @@ import errorHandler from './middleware/errorHandler.js'
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 // * adding logging middleware
 app.use(logger)
