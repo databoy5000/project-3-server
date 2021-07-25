@@ -38,7 +38,6 @@ const memorySchema = new mongoose.Schema({
   comments: [commentSchema],
 })
 
-
 memorySchema.plugin(uniqueValidator)
 
 export default mongoose.model('Memory', memorySchema)

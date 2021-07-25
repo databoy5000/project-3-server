@@ -26,37 +26,9 @@ async function create(req, res, next) {
   }
 }
 
-// ! Comment updates won't be implemented on front end
-// async function update(req, res, next) {
-//   const { memoryId, commentId } = req.params
-//   try {
-
-//     const memory = await Memory.findById(memoryId)
-
-//     if (!memory) {
-//       throw new NotFound
-//     }
-
-//     const comment = memory.comments.id(commentId)
-
-//     if (!req.currentUser._id.equals(comment.user)) {
-//       return res.status(401).send({ errMessage: 'Unauthorized! You cannot update other user\'s comments' })
-//     }
-
-//     comment.set(req.body)
-//     const savedMemory = await memory.save()
-//     res.status(200).json(savedMemory)
-
-//   } catch (e) {
-//     next(e)
-//   }
-// }
-// ! ----------
-
 async function remove(req, res, next) {
   const { memoryId, commentId } = req.params
-  console.log('memoryId: ', memoryId)
-  console.log('commentId: ', commentId)
+
   try {
 
     const memory = await Memory.findById(memoryId)
@@ -88,5 +60,4 @@ async function remove(req, res, next) {
 export default {
   create,
   remove,
-  // update,
 }

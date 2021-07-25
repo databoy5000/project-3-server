@@ -5,7 +5,7 @@ import Memory from '../models/memory.js'
 async function index(req, res, next) {
   try {
 
-    const memories = await Memory.find().populate('user')
+    const memories = await Memory.find()
     res.status(200).json(memories)
 
   } catch (err) {
@@ -32,17 +32,14 @@ async function show(req, res, next) {
   }
 }
 
-// * 1) Create a memory - PART 1 WITH USER INPUT
+// * 1) Create a memory
 async function create(req, res, next) {
   try {
 
-
     req.body.user = req.currentUser
-    console.log('req.body: ', req.body)
 
     // * create memory
     const newMemory = await Memory.create(req.body)
-    newMemory.populate('user')
     newMemory.save()
 
     res.status(201).json(newMemory)
@@ -50,7 +47,7 @@ async function create(req, res, next) {
   } catch (err) {
 
     // * error message if memory already exists
-    if (err.errors.title.properties.type === 'unique') {
+    if (typeof err.errors.title !== 'undefined' && err.errors.title.properties.type === 'unique') {
       return res.status(400).json({ errMessage: 'Memory already exists. Unable to create memory.' })
     }
 
@@ -58,19 +55,12 @@ async function create(req, res, next) {
   }
 }
 
-// * Edit a memory
+// * Update a memory
 async function edit(req, res, next) {
   try {
 
     const id = req.params.memoryId
     const memory = await Memory.findById(id)
-
-    // const currentUserId = req.currentUser._id
-    // const memoryUserId = memory.user
-
-    // if (!currentUserId.equals(memoryUserId)) {
-    //   return res.status(401).json({ message: 'Unauthorized' })
-    // }
 
     if (!memory) {
       throw new NotFound()
@@ -81,8 +71,6 @@ async function edit(req, res, next) {
     res.status(202).json(updatedMemory)
     
   } catch (err) {
-
-    console.log('err: ', err)
     // * error message if memory already exists
     if (err.code === 11000) {
       return res.status(400).json({ message: 'Memory already exists. Unable to create memory.' })
@@ -102,13 +90,6 @@ async function remove(req, res, next) {
     if (!memory) {
       throw new NotFound()
     }
-
-    // const memoryUserId = memory.user
-    // const currentUserId = req.currentUser._id
-
-    // if (!currentUserId.equals(memoryUserId)) {
-    //   return res.status(401).json({ message: 'Unauthorized' })
-    // }
 
     await memory.deleteOne()
 

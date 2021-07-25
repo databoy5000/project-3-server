@@ -4,7 +4,6 @@ export default function errorHandler(err, req, res, next) {
   console.log(err.name)
   console.log(err)
 
-  // specific error handling 
   if (err.name === 'CastError') {
     return res.status(400).json( {
       errName: err.name,
@@ -13,7 +12,6 @@ export default function errorHandler(err, req, res, next) {
   }
 
   if (err.name === 'NotAuthorized') {
-    console.log('in NotAuthorized')
     return res.status(401).json( {
       errName: err.name,
       errMessage: 'Not authorized!',
@@ -30,12 +28,10 @@ export default function errorHandler(err, req, res, next) {
 
   // * when credentials aren't unique at registration
   if (err.name === 'NotUnique') {
-    console.log('in correct error')
     return res.status(400).json({
       errName: err.name,
       errMessage: {
         username: 'Invalid credentials, try something else.',
-        // email: 'Invalid credentials, try something else.',
       },
     })
   }
@@ -87,9 +83,9 @@ export default function errorHandler(err, req, res, next) {
     })
   }
 
-  // Code 500 means internal server error
+  // * Code 500 means internal server error
   res.sendStatus(500)
 
-  // call next function
+  // * call next function
   next(err)
 }

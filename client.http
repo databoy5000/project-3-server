@@ -12,16 +12,17 @@ GET http://localhost:4000/api/memories/60b0a9a83ffa9d65337b3dc1
 
 ### Create memory
 POST http://localhost:4000/api/memories
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFjYzY3ZDkxZTE4OGMyMzcyZTEzN2EiLCJpYXQiOjE2MjIxMDcwNTUsImV4cCI6MTYyMjE1MDI1NX0.uVNF-NgZvC3GDmyy_avvZIrYu6C6e0Fk-1b0RMcJx-A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ1MDYwODNlNzkyNDAwMTU5YWRhZTAiLCJpYXQiOjE2MjcyMTk1NjAsImV4cCI6MTYyNzI2Mjc2MH0.kPWuFNxIC9v2a5jHowykntI0oP9RSuF0knb4JvMbp8M
 content-type: application/json
 
 {
-  "title": "test111 memory 21111111111111111111111111",
-  "city": "LosAngeles",
-  "country":"USa",
-  "date": "2020-05-022",
-  "imageUrl": "https://blog.dys.com/wp-content/uploads/2021/03/One-version-of-the-truth-in-SOP-Our-collective-memory.jpg",
-  "description": "2so that's my test memory 3331111111111111111111111111",
+  "title": "new memory 999",
+  "city": "Cannes",
+  "country":"France",
+  "date": "2020-07-25",
+  "image": "fake URL",
+  "description": "cool memory",
+  "location": [55,55],
   "tags": ["stuff", "more stuff"]
 }
 
@@ -98,8 +99,8 @@ POST http://localhost:4000/api/login
 Content-Type: application/json
 
 {
-  "email": "user2mail34",
-  "password": "2"
+  "email": "yep@ok",
+  "password": "pass"
 }
 
 ### TEST lat/ long

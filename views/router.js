@@ -11,7 +11,6 @@ import secureRoute from '../middleware/secureRoute.js'
 const router = Router()
 
 // * MEMORY ROUTES
-
 router.route('/memories')
   .get(memoryController.index)
   .post(secureRoute, memoryController.create)
@@ -21,14 +20,11 @@ router.route('/memories/:memoryId')
   .put(secureRoute, memoryController.edit)
   .delete(secureRoute, memoryController.remove)
 
-
 router.route('/memories/:memoryId/comment')
   .post(secureRoute, commentController.create)
 
 router.route('/memories/:memoryId/comment/:commentId')
   .delete(secureRoute, commentController.remove)
-  // ! Comment updates won't be implemented on front end
-  // .put(secureRoute, commentController.update)
 
 
 //* USER ROUTES

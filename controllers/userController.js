@@ -53,7 +53,6 @@ async function login(req, res, next) {
     )
 
     res.status(200).json({ message: `Login successful, welcome back ${user.username}!`, token })
-    console.log(user)
 
   } catch (err) {
     next(err)
@@ -73,7 +72,6 @@ async function checkUnique(req,res,next) {
     }
 
   } catch (err) {
-    console.log('err.name: ', err.name)
     next(err)
   }
 }
