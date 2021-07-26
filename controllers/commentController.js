@@ -17,7 +17,7 @@ async function create(req, res, next) {
     }
 
     memory.comments.push(req.body)
-    memory.save()
+    await memory.save()
 
     res.status(200).json(memory)
 
