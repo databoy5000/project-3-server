@@ -7,7 +7,7 @@
 GET http://localhost:4000/api/memories
 
 ### Get single memory
-GET http://localhost:4000/api/memories/60b0a9a83ffa9d65337b3dc1
+GET http://localhost:4000/api/memories/60fd6c7ff1d463124bd27d28
 
 
 ### Create memory
@@ -17,12 +17,13 @@ content-type: application/json
 
 {
   "title": "new memory 999",
-  "city": "Cannes",
-  "country":"France",
   "date": "2020-07-25",
   "image": "fake URL",
   "description": "cool memory",
-  "location": [55,55],
+  "location": {
+    "userInput": "a place",
+    "coordinates": ["55","55"],
+  },
   "tags": ["stuff", "more stuff"]
 }
 
@@ -86,11 +87,11 @@ POST http://localhost:4000/api/register
 Content-Type: application/json
 
 {
-  "username": "user4",
-  "email": "user2mail34",
-  "emailConfirmation": "user2mail34",
-  "password": "2",
-  "passwordConfirmation":"2"
+  "username": "yep",
+  "email": "yep@ok",
+  "emailConfirmation": "yep@ok",
+  "password": "pass",
+  "passwordConfirmation":"pass"
 }
 
 
